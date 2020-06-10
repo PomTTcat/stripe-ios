@@ -268,8 +268,8 @@ CGFloat const STPPaymentCardTextFieldMinimumPadding = 10;
 
 #pragma mark initializers
 
-- (void)didMoveToSuperview {
-    
+- (void)didMoveToWindow {
+    NSLog(@"--%@--", @"didMoveToWindow");
     switch (self.type) {
         case STPcustom1: {
             [UIView LBAddConstraintAroundSubView:self.contentView];
@@ -282,7 +282,6 @@ CGFloat const STPPaymentCardTextFieldMinimumPadding = 10;
         default:
             break;
     }
-    
 }
 
 #pragma mark appearance properties
