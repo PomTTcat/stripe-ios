@@ -829,12 +829,9 @@
 		AD8E612C248F638000E3938D /* STPPaymentCardContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = AD8E612A248F638000E3938D /* STPPaymentCardContentView.h */; };
 		AD8E612D248F638000E3938D /* STPPaymentCardContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8E612B248F638000E3938D /* STPPaymentCardContentView.m */; };
 		ADB038AF248F7BEB00EDB75E /* STPPaymentCardContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8E6128248F636B00E3938D /* STPPaymentCardContentView.xib */; };
-		ADB038B0248F7BF600EDB75E /* STPPaymentCardContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8E6128248F636B00E3938D /* STPPaymentCardContentView.xib */; };
-		ADB038B6248F92D400EDB75E /* STPPaymentCardContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8E6128248F636B00E3938D /* STPPaymentCardContentView.xib */; };
-		ADB038B7248F92D400EDB75E /* STPPaymentCardContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8E6128248F636B00E3938D /* STPPaymentCardContentView.xib */; };
-		ADB038B8248F92D500EDB75E /* STPPaymentCardContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8E6128248F636B00E3938D /* STPPaymentCardContentView.xib */; };
 		ADB038BB248F9A9300EDB75E /* UIView+customAddConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = ADB038B9248F9A9300EDB75E /* UIView+customAddConstraint.h */; };
 		ADB038BC248F9A9300EDB75E /* UIView+customAddConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB038BA248F9A9300EDB75E /* UIView+customAddConstraint.m */; };
+		ADEEE75D2490E77100721BCB /* STPPaymentCardContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD8E6128248F636B00E3938D /* STPPaymentCardContentView.xib */; };
 		B318518320BE011700EE8C0F /* STPColorUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B318518220BE011700EE8C0F /* STPColorUtilsTest.m */; };
 		B3213F9221A3903D00FB4FC7 /* stp_card_form_amex_cvc.png in Resources */ = {isa = PBXBuildFile; fileRef = B3213F8F21A3903C00FB4FC7 /* stp_card_form_amex_cvc.png */; };
 		B3213F9321A3903D00FB4FC7 /* stp_card_form_amex_cvc@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3213F9021A3903C00FB4FC7 /* stp_card_form_amex_cvc@3x.png */; };
@@ -4718,7 +4715,6 @@
 				C1CFCB7A1ED5F88D00BE45DF /* stp_test_upload_image.jpeg in Resources */,
 				F152322F1EA9344600D65C67 /* iDEALSource.json in Resources */,
 				F16AA26F1F5A0F1700207FFF /* AlipaySource.json in Resources */,
-				ADB038B8248F92D500EDB75E /* STPPaymentCardContentView.xib in Resources */,
 				8B39128920E2F9E000098401 /* P24Source.json in Resources */,
 				04E01F8A21AA55E30061402F /* recorded_network_traffic in Resources */,
 				8B39128220E2F99600098401 /* EPSSource.json in Resources */,
@@ -4895,7 +4891,6 @@
 			files = (
 				3650AA4D21C07E3D002B0893 /* LaunchScreen.storyboard in Resources */,
 				3650AA4A21C07E3D002B0893 /* Assets.xcassets in Resources */,
-				ADB038B6248F92D400EDB75E /* STPPaymentCardContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4903,7 +4898,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADB038B7248F92D400EDB75E /* STPPaymentCardContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4915,7 +4909,7 @@
 				31C8270F232C19BA002ECB0A /* stp_bank_fpx_kfh@3x.png in Resources */,
 				31C826F8232C19BA002ECB0A /* stp_bank_fpx_bank_rakyat@3x.png in Resources */,
 				31C826EC232C19BA002ECB0A /* stp_bank_fpx_ambank.png in Resources */,
-				ADB038B0248F7BF600EDB75E /* STPPaymentCardContentView.xib in Resources */,
+				ADEEE75D2490E77100721BCB /* STPPaymentCardContentView.xib in Resources */,
 				C1B630BC1D1D860100A05285 /* stp_card_amex@2x.png in Resources */,
 				C15993471D8829C00047950D /* stp_shipping_form@3x.png in Resources */,
 				C1363BB31D76337900EB82B4 /* stp_icon_checkmark@2x.png in Resources */,
