@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Stripe
 
 struct Product {
     let emoji: String
@@ -113,6 +114,15 @@ class BrowseProductsViewController: UICollectionViewController {
             buyButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8),
             buyButton.heightAnchor.constraint(equalToConstant: BuyButton.defaultHeight),
         ])
+        
+        let x = STPPaymentCardTextField(frame: CGRect(x: 0, y: 100, width: 414, height: 200))
+        view.addSubview(x)
+        
+        let y = STPPaymentCardTextField(frame: CGRect(x: 0, y: 300, width: 414, height: 200), with: STPPaymentCardTextFieldType.STPcustom1);
+        if let y = y {
+            view.addSubview(y);
+        }
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -140,6 +150,10 @@ class BrowseProductsViewController: UICollectionViewController {
         for item in selectedItems {
             self.collectionView.selectItem(at: item, animated: false, scrollPosition: [])
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.becomeFirstResponder()
     }
 
     @objc func showSettings() {
@@ -172,7 +186,8 @@ extension BrowseProductsViewController: UICollectionViewDelegateFlowLayout {
 
     //MARK: - UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.productsAndPrices.count
+        return 0
+//        return self.productsAndPrices.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

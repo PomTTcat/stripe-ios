@@ -22,7 +22,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        STPPaymentCardTextField *paymentField = [[STPPaymentCardTextField alloc] initWithFrame:self.bounds];
+        STPPaymentCardTextField *paymentField = [[STPPaymentCardTextField alloc] initWithFrame:self.bounds withType:STPcustom1];
         paymentField.postalCodeEntryEnabled = NO;
         [self.contentView addSubview:paymentField];
         _paymentField = paymentField;

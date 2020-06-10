@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import "STPPaymentMethodCard.h"
+#import "STPPaymentIntentEnums.h"
 
 @class STPPaymentCardTextField, STPPaymentMethodCardParams;
 @protocol STPPaymentCardTextFieldDelegate;
@@ -23,6 +23,7 @@
 IB_DESIGNABLE
 @interface STPPaymentCardTextField : UIControl <UIKeyInput>
 
+- (instancetype _Nullable )initWithFrame:(CGRect)frame withType:(STPPaymentCardTextFieldType) type;
 /**
  @see STPPaymentCardTextFieldDelegate
  */

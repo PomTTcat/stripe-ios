@@ -21,6 +21,11 @@
 #import "STPLocalizationUtils.h"
 #import "STPAnalyticsClient.h"
 
+// 自定义view
+#import "STPPaymentCardContentView.h"
+#import "UIView+customAddConstraint.h"
+
+
 @interface STPPaymentCardTextField()<STPFormTextFieldDelegate>
 
 @property (nonatomic, readwrite, weak) UIImageView *brandImageView;
@@ -77,6 +82,10 @@
 @property (nonatomic, assign) BOOL receivedUnmatchedShouldBeginEditing;
 @property (nonatomic, assign) BOOL receivedUnmatchedShouldEndEditing;
 
+// 是否使用原生的样式
+@property (nonatomic, assign) STPPaymentCardTextFieldType type;
+@property (nonatomic, strong) STPPaymentCardContentView *contentView;
+
 @end
 
 NS_INLINE CGFloat stp_ceilCGFloat(CGFloat x) {
@@ -111,6 +120,7 @@ CGFloat const STPPaymentCardTextFieldMinimumPadding = 10;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
+    _type = STPorigin;
     if (self) {
         [self commonInit];
     }
@@ -119,9 +129,21 @@ CGFloat const STPPaymentCardTextFieldMinimumPadding = 10;
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
+    _type = STPorigin;
     if (self) {
         [self commonInit];
     }
+    
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame withType:(STPPaymentCardTextFieldType) type {
+    self = [super initWithFrame:frame];
+    _type = type;
+    if (self) {
+        [self commonInit];
+    }
+    
     return self;
 }
 
@@ -196,17 +218,43 @@ CGFloat const STPPaymentCardTextFieldMinimumPadding = 10;
                        cvcField,
                        postalCodeField];
     
-    [self addSubview:self.fieldsView];
-    for (STPFormTextField *field in self.allFields) {
-        [self.fieldsView addSubview:field];
-    }
-
-    [self addSubview:brandImageView];
     // On small screens, the number field fits ~4 numbers, and the brandImage is just as large.
     // Previously, taps on the brand image would *dismiss* the keyboard. Make it move to the numberField instead
     brandImageView.userInteractionEnabled = YES;
     [brandImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:numberField
                                                                                  action:@selector(becomeFirstResponder)]];
+
+    switch (self.type) {
+        case STPorigin: {
+            [self addSubview:self.fieldsView];
+            [self addSubview:brandImageView];
+            for (STPFormTextField *field in self.allFields) {
+                [self.fieldsView addSubview:field];
+            }
+            break;
+        }
+        case STPcustom1: {
+            STPPaymentCardContentView *contentView = [STPPaymentCardContentView loadFromNib];
+            self.contentView = contentView;
+            [self addSubview:contentView];
+            
+            [contentView.numberField addSubview:self.numberField];
+            [contentView.cvcField addSubview:self.cvcField];
+            [contentView.expirationField addSubview:self.expirationField];
+            [contentView.postalCodeField addSubview:self.postalCodeField];
+            [contentView.brandImageV addSubview:self.brandImageView];
+            
+            [UIView LBAddConstraintAroundSubView:contentView];
+            [UIView LBAddConstraintAroundSubView:brandImageView];
+            for (STPFormTextField *field in self.allFields) {
+                [UIView LBAddConstraintAroundSubView:field];
+            }
+            
+            break;
+        }
+        default:
+            break;
+    }
 
     self.focusedTextFieldForLayout = nil;
     [self updateCVCPlaceholder];
@@ -552,6 +600,7 @@ CGFloat const STPPaymentCardTextFieldMinimumPadding = 10;
                          animated:YES
                        completion:nil];
     [self updateImageForFieldType:STPCardFieldTypeNumber];
+    [self.contentView selectField:404];
     return success;
 }
 
@@ -890,11 +939,26 @@ typedef NS_ENUM(NSInteger, STPCardTextFieldState) {
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [self recalculateSubviewLayout];
+    
+    [self recalculateSubviewLayoutWithType];
+
+}
+
+- (void)recalculateSubviewLayoutWithType {
+    switch (self.type) {
+        case STPorigin:
+            [self recalculateSubviewLayout];
+            break;
+        case STPcustom1:
+            [self recalculateSubviewLayoutCustom];
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)recalculateSubviewLayout {
-
+    
     CGRect bounds = self.bounds;
 
     self.brandImageView.frame = [self brandImageRectForBounds:bounds];
@@ -1136,6 +1200,24 @@ typedef NS_ENUM(NSInteger, STPCardTextFieldState) {
     updateFieldVisibility(self.postalCodeField, self.postalCodeEntryEnabled ? postalVisibility :  STPCardTextFieldStateHidden);
 }
 
+- (void)recalculateSubviewLayoutCustom {
+    
+    void (^updateFieldVisibility)(STPFormTextField *, STPCardTextFieldState) = ^(STPFormTextField *field, STPCardTextFieldState fieldState) {
+        if (fieldState == STPCardTextFieldStateHidden) {
+            field.alpha = 0.0f;
+            field.isAccessibilityElement = NO;
+        } else {
+            field.alpha = 1.0f;
+            field.isAccessibilityElement = YES;
+        }
+    };
+
+    updateFieldVisibility(self.numberField, STPCardTextFieldStateVisible);
+    updateFieldVisibility(self.expirationField, STPCardTextFieldStateVisible);
+    updateFieldVisibility(self.cvcField, STPCardTextFieldStateVisible);
+    updateFieldVisibility(self.postalCodeField, STPCardTextFieldStateVisible);
+}
+
 #pragma mark - private helper methods
 
 - (STPFormTextField *)buildTextField {
@@ -1160,7 +1242,9 @@ typedef void (^STPLayoutAnimationCompletionBlock)(BOOL completed);
                      completion:(STPLayoutAnimationCompletionBlock)completion {
 
     NSNumber *fieldtoFocus = focusedField;
-
+    
+    [self.contentView selectField:focusedField.intValue];
+    
     if (fieldtoFocus == nil
         && ![self.focusedTextFieldForLayout isEqualToNumber:@(STPCardFieldTypeNumber)]
         && ([self.viewModel validationStateForField:STPCardFieldTypeNumber] != STPCardValidationStateValid)) {
@@ -1182,7 +1266,7 @@ typedef void (^STPLayoutAnimationCompletionBlock)(BOOL completed);
     self.focusedTextFieldForLayout = fieldtoFocus;
 
     void (^animations)(void) = ^void() {
-        [self recalculateSubviewLayout];
+        [self recalculateSubviewLayoutWithType];
     };
 
     if (animated) {
@@ -1636,3 +1720,10 @@ typedef NS_ENUM(NSInteger, STPFieldEditingTransitionCallSite) {
 }
 
 @end
+
+/*
+ recalculateSubviewLayout
+ 
+ updateImageForFieldType
+ 
+ */

@@ -498,6 +498,11 @@ typedef NS_ENUM(NSUInteger, STPPaymentCardSection) {
     return 0.01f;
 }
 
+// GXD自定义cell高度
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 163;
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if ([self tableView:tableView numberOfRowsInSection:section] == 0) {
         return [UIView new];

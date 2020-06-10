@@ -11,6 +11,8 @@
 #import "STPPaymentCardTextField.h"
 #import "STPTheme.h"
 
+#import "STPPaymentIntentEnums.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface STPPaymentCardTextFieldCell : UITableViewCell

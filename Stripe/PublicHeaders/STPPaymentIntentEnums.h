@@ -184,5 +184,7 @@ typedef NS_ENUM(NSUInteger, STPPaymentIntentSourceActionType)  {
     STPPaymentIntentSourceActionTypeAuthorizeWithURL __attribute__((deprecated("Use STPIntentActionTypeRedirectToURL instead", "STPIntentActionTypeRedirectToURL"))) = STPIntentActionTypeRedirectToURL,
 };
 
-
-
+typedef NS_ENUM(NSUInteger, STPPaymentCardTextFieldType) {
+    STPorigin = 0,
+    STPcustom1 = 1
+};
