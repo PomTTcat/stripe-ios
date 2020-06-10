@@ -115,14 +115,21 @@ class BrowseProductsViewController: UICollectionViewController {
             buyButton.heightAnchor.constraint(equalToConstant: BuyButton.defaultHeight),
         ])
         
-        let x = STPPaymentCardTextField(frame: CGRect(x: 0, y: 100, width: 414, height: 200))
-        view.addSubview(x)
+//        let x = STPPaymentCardTextField(frame: CGRect(x: 0, y: 100, width: 414, height: 200))
+//        view.addSubview(x)
+//
+//        let y = STPPaymentCardTextField(frame: CGRect(x: 0, y: 300, width: 414, height: 200), with: STPPaymentCardTextFieldType.STPcustom1);
+//        if let y = y {
+//            view.addSubview(y);
+//        }
         
-        let y = STPPaymentCardTextField(frame: CGRect(x: 0, y: 300, width: 414, height: 200), with: STPPaymentCardTextFieldType.STPcustom1);
-        if let y = y {
-            view.addSubview(y);
+  
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            
+            let addCardViewController = STPAddCardViewController.init()
+            self.navigationController?.pushViewController(addCardViewController, animated: true)
         }
-        
     }
 
     override func viewDidAppear(_ animated: Bool) {

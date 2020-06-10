@@ -69,6 +69,8 @@ class MyAPIClient: NSObject, STPCustomerEphemeralKeyProvider {
         let url = self.baseURL.appendingPathComponent("ephemeral_keys")
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
         urlComponents.queryItems = [URLQueryItem(name: "api_version", value: apiVersion)]
+        urlComponents.queryItems = [URLQueryItem(name: "customer_id", value: "cus_HRIBNiGDt7CA6k")]
+        
         var request = URLRequest(url: urlComponents.url!)
         request.httpMethod = "POST"
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
