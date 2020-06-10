@@ -237,7 +237,7 @@ CGFloat const STPPaymentCardTextFieldMinimumPadding = 10;
             STPPaymentCardContentView *contentView = [STPPaymentCardContentView loadFromNib];
             self.contentView = contentView;
             [self addSubview:contentView];
-            
+
             [contentView.numberField addSubview:self.numberField];
             [contentView.cvcField addSubview:self.cvcField];
             [contentView.expirationField addSubview:self.expirationField];
@@ -269,7 +269,6 @@ CGFloat const STPPaymentCardTextFieldMinimumPadding = 10;
 #pragma mark initializers
 
 - (void)didMoveToWindow {
-    NSLog(@"--%@--", @"didMoveToWindow");
     switch (self.type) {
         case STPcustom1: {
             [UIView LBAddConstraintAroundSubView:self.contentView];

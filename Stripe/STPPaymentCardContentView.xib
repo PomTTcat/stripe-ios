@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="STPPaymentCardContentView" customModule="Stripe" customModuleProvider="target">
+        <view contentMode="scaleToFill" ambiguous="YES" id="iN0-l3-epB" customClass="STPPaymentCardContentView">
             <rect key="frame" x="0.0" y="0.0" width="450" height="259"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -152,21 +152,13 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="bottomLine0" destination="Kop-v4-d2O" id="YU0-Ef-t8Q"/>
-                <outlet property="bottomLine1" destination="DJg-QH-e4r" id="pDO-Ki-FVJ"/>
-                <outlet property="bottomLine2" destination="HeB-ti-nl5" id="uDP-zj-GoI"/>
-                <outlet property="bottomLine3" destination="2bk-gw-Wpl" id="Lyl-2K-07i"/>
-                <outlet property="brandImageV" destination="kg8-v0-oQn" id="pcJ-94-qT3"/>
-                <outlet property="cvcField" destination="WCp-Wp-aIg" id="yEc-Rp-TK4"/>
-                <outlet property="expirationField" destination="2Cr-tE-kO3" id="VTW-jz-g19"/>
-                <outlet property="numberField" destination="dLS-EU-wyh" id="uS5-86-4zd"/>
-                <outlet property="postalCodeField" destination="8g3-GA-ZIr" id="4RL-Hi-lLz"/>
-                <outlet property="topLable0" destination="HTK-Cc-hrh" id="prc-Ud-IGe"/>
-                <outlet property="topLable1" destination="iqx-Gf-XSe" id="Cbk-2v-F2P"/>
-                <outlet property="topLable2" destination="7Ln-lK-vGC" id="OIc-ez-ce0"/>
-                <outlet property="topLable3" destination="bs3-eb-oLU" id="yD6-Dr-H3W"/>
+                <outlet property="brandImageV" destination="kg8-v0-oQn" id="azv-QG-nbe"/>
+                <outlet property="cvcField" destination="WCp-Wp-aIg" id="bFa-Hk-0wC"/>
+                <outlet property="expirationField" destination="2Cr-tE-kO3" id="cMN-j0-e1x"/>
+                <outlet property="numberField" destination="dLS-EU-wyh" id="opA-RR-lMD"/>
+                <outlet property="postalCodeField" destination="8g3-GA-ZIr" id="pqE-lP-3rS"/>
             </connections>
-            <point key="canvasLocation" x="194.20289855072465" y="-79.352678571428569"/>
+            <point key="canvasLocation" x="157" y="-67"/>
         </view>
     </objects>
 </document>

@@ -27,7 +27,8 @@ static UIColor *customGrayColor;
 @implementation STPPaymentCardContentView
 
 + (STPPaymentCardContentView *)loadFromNib {
-    NSBundle *stripeBundle = [NSBundle bundleWithIdentifier:@"com.stripe.stripe-ios"];
+
+    NSBundle *stripeBundle = [NSBundle mainBundle];
     STPPaymentCardContentView *contentView = [[stripeBundle loadNibNamed:@"STPPaymentCardContentView" owner:nil options:nil] firstObject];
     return contentView;
 }
@@ -62,7 +63,28 @@ static UIColor *customGrayColor;
 }
 
 - (void)privateSelectField:(int) number {
-    
+    switch (number) {
+        case 0:
+            _bottomLine0.backgroundColor = customBlueColor;
+            _topLable0.textColor = customBlueColor;
+            break;
+        case 1:
+            _bottomLine1.backgroundColor = customBlueColor;
+            _topLable1.textColor = customBlueColor;
+            break;
+        case 2:
+            _bottomLine2.backgroundColor = customBlueColor;
+            _topLable2.textColor = customBlueColor;
+            break;
+        case 3:
+            _bottomLine3.backgroundColor = customBlueColor;
+            _topLable3.textColor = customBlueColor;
+            break;
+        default:
+            // 所有变成默认
+            break;
+    }
+
 }
 
 @end
