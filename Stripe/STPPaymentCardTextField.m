@@ -244,6 +244,11 @@ CGFloat const STPPaymentCardTextFieldMinimumPadding = 10;
             [contentView.postalCodeField addSubview:self.postalCodeField];
             [contentView.brandImageV addSubview:self.brandImageView];
             
+            [UIView LBAddConstraintAroundSubView:self.contentView];
+            [UIView LBAddConstraintAroundSubView:self.brandImageView];
+            for (STPFormTextField *field in self.allFields) {
+                [UIView LBAddConstraintAroundSubView:field];
+            }
             break;
         }
         default:
@@ -263,24 +268,6 @@ CGFloat const STPPaymentCardTextFieldMinimumPadding = 10;
         _viewModel = [STPPaymentCardTextFieldViewModel new];
     }
     return _viewModel;
-}
-
-
-#pragma mark initializers
-
-- (void)didMoveToWindow {
-    switch (self.type) {
-        case STPcustom1: {
-            [UIView LBAddConstraintAroundSubView:self.contentView];
-            [UIView LBAddConstraintAroundSubView:self.brandImageView];
-            for (STPFormTextField *field in self.allFields) {
-                [UIView LBAddConstraintAroundSubView:field];
-            }
-            break;
-        }
-        default:
-            break;
-    }
 }
 
 #pragma mark appearance properties
