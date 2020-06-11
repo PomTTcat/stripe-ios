@@ -15,10 +15,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ICv-mW-S1E">
-                    <rect key="frame" x="10" y="54" width="394" height="163"/>
+                    <rect key="frame" x="10" y="54" width="394" height="164"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="YU2-u9-tpb">
-                            <rect key="frame" x="0.0" y="0.0" width="394" height="74"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="YU2-u9-tpb">
+                            <rect key="frame" x="0.0" y="0.0" width="394" height="75"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTK-Cc-hrh">
                                     <rect key="frame" x="0.0" y="0.0" width="394" height="32"/>
@@ -30,22 +30,18 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8XT-aU-0gY">
-                                    <rect key="frame" x="0.0" y="34" width="394" height="37"/>
+                                    <rect key="frame" x="0.0" y="34" width="394" height="38"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kg8-v0-oQn">
-                                            <rect key="frame" x="0.0" y="0.0" width="32" height="37"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="32" height="38"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="36" id="AdT-P3-q4x"/>
                                                 <constraint firstAttribute="width" constant="32" id="W8o-xd-uEj"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLS-EU-wyh">
-                                            <rect key="frame" x="42" y="0.0" width="352" height="37"/>
+                                            <rect key="frame" x="42" y="0.0" width="352" height="38"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="55" id="JCo-vc-Pr4"/>
-                                            </constraints>
                                         </view>
                                     </subviews>
                                     <constraints>
@@ -53,7 +49,7 @@
                                     </constraints>
                                 </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kop-v4-d2O">
-                                    <rect key="frame" x="0.0" y="73" width="394" height="1"/>
+                                    <rect key="frame" x="0.0" y="74" width="394" height="1"/>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="QoY-5i-TQi"/>
@@ -61,11 +57,11 @@
                                 </view>
                             </subviews>
                             <constraints>
-                                <constraint firstAttribute="height" constant="74" id="ScF-FG-XPj"/>
+                                <constraint firstAttribute="height" constant="75" id="ScF-FG-XPj"/>
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7yc-Kd-BeN">
-                            <rect key="frame" x="0.0" y="94" width="394" height="69"/>
+                            <rect key="frame" x="0.0" y="95" width="394" height="69"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="RHs-Et-PZo">
                                     <rect key="frame" x="0.0" y="0.0" width="118" height="69"/>
