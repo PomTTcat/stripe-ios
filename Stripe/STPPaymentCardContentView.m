@@ -28,12 +28,8 @@ static UIColor *customGrayColor;
 
 + (STPPaymentCardContentView *)loadFromNib {
 
-    
-    
-    NSBundle *stripeBundle = [NSBundle bundleWithIdentifier:@"com.stripe.stripe-ios"];
-    NSBundle *stripeBundleCoco = [NSBundle bundleWithIdentifier:@"org.cocoapods.Stripe"];
-    NSBundle *goodBundle = stripeBundleCoco ?: stripeBundle;
-    STPPaymentCardContentView *contentView = [[goodBundle loadNibNamed:@"STPPaymentCardContentView" owner:nil options:nil] firstObject];
+    NSBundle *stripeBundle = [NSBundle bundleForClass:[STPPaymentCardContentView class]];
+    STPPaymentCardContentView *contentView = [[stripeBundle loadNibNamed:@"STPPaymentCardContentView" owner:nil options:nil] firstObject];
     return contentView;
 }
 
